@@ -12,18 +12,18 @@ export class CardsService {
     @InjectModel(Recipient) private recipientModel: typeof Recipient,
   ) {}
 
-  async create(CreateCardDto: CreateCardDto): Promise<Card> {
-    const {card_type,  card_number, recipient_id, expiry_date  } = CreateCardDto;
+  async create(createCardDto: CreateCardDto): Promise<Card> {
+    const { card_type, card_number, recipient_id, expiry_date } = createCardDto;
+
     if (!card_type || !card_number || !recipient_id || !expiry_date) {
-      throw new NotFoundException('Iltimos barchasini kiriting');
+      throw new BadRequestException('Iltimos, barcha maydonlarni kiriting');
     }
 
-    const cardModel = await this.cardModel.findByPk(recipient_id);
-    if (!cardModel) {
+    const recipient = await this.recipientModel.findByPk(recipient_id);
+    if (!recipient) {
       throw new NotFoundException('Bunday recipient mavjud emas');
     }
-
-    return this.cardModel.create(CreateCardDto);
+    return this.cardModel.create(createCardDto);
   }
 
   findAll(): Promise<Card[]> {

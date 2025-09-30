@@ -3,7 +3,7 @@ import { Recipient } from '../../recipient/models/recipient.model';
 
 interface ICardsCreationAttr {
   card_type: string;
-  card_number: number;
+  card_number: string;
   recipient_id: number;
   expiry_date: string;
 }
@@ -23,11 +23,11 @@ export class Card extends Model<Card, ICardsCreationAttr> {
   })
   declare card_type: string;
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
     unique: true,
   })
-  declare card_number: number;
+  declare card_number: string;
 
   @Column({
     type: DataType.STRING,
@@ -38,7 +38,7 @@ export class Card extends Model<Card, ICardsCreationAttr> {
   @ForeignKey(() => Recipient)
   @Column({
     type: DataType.INTEGER,
-    onDelete: 'Cascade',
+    onDelete: 'CASCADE',
   })
   declare recipient_id: number;
 
