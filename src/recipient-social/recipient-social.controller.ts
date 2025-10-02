@@ -11,14 +11,14 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 export class RecipientSocialController {
   constructor(private readonly recipientSocialService: RecipientSocialService) {}
 
-     @ApiOperation({ summary: 'Recipient Social' })
-     @ApiBearerAuth()
+  @ApiOperation({ summary: 'Recipient Social' })
+  @ApiBearerAuth()
   @Post()
   create(@Body() createRecipientSocialDto: CreateRecipientSocialDto) {
     return this.recipientSocialService.create(createRecipientSocialDto);
   }
-    @ApiOperation({ summary: 'Get all Recipient Social' })
-    @ApiBearerAuth()
+  @ApiOperation({ summary: 'Get all Recipient Social' })
+  @ApiBearerAuth()
   @Get()
   findAll() {
     return this.recipientSocialService.findAll();
@@ -29,17 +29,15 @@ export class RecipientSocialController {
   findOne(@Param('id') id: string) {
     return this.recipientSocialService.findOne(+id);
   }
+  
   @ApiOperation({ summary: 'Update Recipient Social by ID' })
   @ApiBearerAuth()
-
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateRecipientSocialDto: UpdateRecipientSocialDto) {
     return this.recipientSocialService.update(+id, updateRecipientSocialDto);
   }
   @ApiOperation({ summary: 'Delete Recipient Social by ID' })
   @ApiBearerAuth()
-
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.recipientSocialService.remove(+id);
