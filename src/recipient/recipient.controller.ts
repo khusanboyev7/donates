@@ -18,7 +18,7 @@ import { RecipientGuard } from '../common/guards/recipient.guard';
 @ApiTags('Recipient')
 @ApiBearerAuth()
 @Controller('recipient')
-@UseGuards(JwtAuthGuard, RecipientGuard) // 👈 barcha methodlarga ishlaydi
+@UseGuards(JwtAuthGuard, RecipientGuard) 
 export class RecipientController {
   constructor(private readonly recipientService: RecipientService) {}
 

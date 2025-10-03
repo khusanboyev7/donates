@@ -7,6 +7,10 @@ import { SocialMediaModule } from './social-media/social-media.module';
 import { RecipientModule } from './recipient/recipient.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
+import { CategoryModule } from './category/category.module';
+import { ShopModule } from './shop/shop.module';
+import { OrderModule } from './order/order.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -30,6 +34,10 @@ import { AuthModule } from './auth/auth.module';
     RecipientModule,
     AdminModule,
     AuthModule,
+    CategoryModule,
+    ShopModule,
+    OrderModule,
+    UserModule,
   
   ],
   controllers: [],
