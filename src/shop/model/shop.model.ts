@@ -1,7 +1,8 @@
-import { Column, DataType, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
+import { BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
 import { Recipient } from '../../recipient/models/recipient.model';
 import { Category } from '../../category/model/category.model';
 import { Order } from '../../order/model/order.model';
+import { User } from '../../user/models/user.model';
 
 interface IShopCreationAttr {
   name: string;
@@ -61,4 +62,7 @@ export class Shop extends Model<Shop, IShopCreationAttr> {
 
     @HasMany(() => Order)
     orders: Order[];
+
+    @BelongsToMany(() => User, () => Order)
+    users: User
 }

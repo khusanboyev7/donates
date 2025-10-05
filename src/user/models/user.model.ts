@@ -1,5 +1,15 @@
-import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import {
+  BelongsToMany,
+  Column,
+  DataType,
+  HasMany,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 import { Order } from '../../order/model/order.model';
+import { Shop } from '../../shop/model/shop.model';
+import { Donate } from '../../donate/models/donate.model';
+import { Payment } from '../../payments/models/payment.model';
 
 interface IUserCreationAttr {
   full_name: string;
@@ -43,4 +53,16 @@ export class User extends Model<User, IUserCreationAttr> {
 
   @HasMany(() => Order)
   orders: Order[];
+
+  @BelongsToMany(() => Shop, () => Order)
+  shop: Shop;
+
+  @HasMany(() => Donate)
+  donate: Donate;
+
+  @HasMany(() => Payment)
+  payments: Payment;
+
+  @BelongsToMany(() => Donate, () => Payment)
+  donates: Donate;
 }

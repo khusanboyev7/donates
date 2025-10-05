@@ -11,6 +11,8 @@ import { CategoryModule } from './category/category.module';
 import { ShopModule } from './shop/shop.module';
 import { OrderModule } from './order/order.module';
 import { UserModule } from './user/user.module';
+import { DonateModule } from './donate/donate.module';
+import { PaymentModule } from './payments/payments.module';
 
 @Module({
   imports: [
@@ -38,6 +40,8 @@ import { UserModule } from './user/user.module';
     ShopModule,
     OrderModule,
     UserModule,
+    DonateModule,
+    PaymentModule,
   
   ],
   controllers: [],

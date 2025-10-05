@@ -3,11 +3,13 @@ import {
   Column,
   DataType,
   ForeignKey,
+  HasMany,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { User } from '../../user/models/user.model';
 import { Shop } from '../../shop/model/shop.model';
+import { Payment } from '../../payments/models/payment.model';
 
 interface IOrderCreationAttr {
   location: string;
@@ -57,4 +59,7 @@ export class Order extends Model<Order, IOrderCreationAttr> {
 
   @BelongsTo(() => Shop)
   shops: Shop;
+
+  @HasMany(() => Payment)
+  payments: Payment;
 }
